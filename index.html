@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankitha Charitable Trust</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c5282;
+            --secondary-color: #38a169;
+            --accent-color: #ed8936;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .navbar {
+            background-color: rgba(44, 82, 130, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:white;stop-opacity:0.1"/><stop offset="100%" style="stop-color:white;stop-opacity:0"/></radialGradient></defs><circle cx="200" cy="200" r="300" fill="url(%23a)"/><circle cx="800" cy="800" r="200" fill="url(%23a)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .logo-container {
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .logo-globe {
+            background: black;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            
+        }
+
+        .logo-globe img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 30%;
+        }
+
+        .school-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .school-info h4 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .school-logo-container {
+            width: 200px;
+            height: 200px;
+            background: #347433;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .school-logo-container img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .school-logo-placeholder {
+            color: white;
+            font-size: 11px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .service-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .service-item h6 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-primary-custom {
+            background: var(--accent-color);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary-custom:hover {
+            background: #dd7324;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(237, 137, 54, 0.4);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .about-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .about-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .inspiration-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .inspiration-content {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .inspiration-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/><circle cx="50" cy="50" r="25" fill="none" stroke="white" stroke-width="0.3" opacity="0.1"/></svg>');
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .gallery-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .gallery-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-scroll {
+            display: flex;
+            animation: scroll 20s linear infinite;
+        }
+
+        .gallery-item {
+            min-width: 300px;
+            height: 200px;
+            margin: 0 10px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 14px;
+            text-align: center;
+            border: 2px dashed #dee2e6;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-placeholder {
+            padding: 20px;
+            line-height: 1.4;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .founders-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .founder-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .founder-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .founder-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: #f8f9fa;
+            border: 3px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #6c757d;
+            font-weight: 500;
+            text-align: center;
+            line-height: 1.3;
+            overflow: hidden;
+        }
+
+        .founder-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .contact-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .contact-form .form-control {
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(44, 82, 130, 0.25);
+        }
+
+        .contact-info {
+            padding: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 20px;
+            color: var(--accent-color);
+        }
+
+        .footer {
+            background: #1a202c;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-globe me-2"></i>Ankitha Charitable Trust
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inspiration">Inspiration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#founders">Founders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+   <!-- Hero Section -->
+<section id="home" class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="hero-content">
+                    <h1>Ankitha Charitable Trust</h1>
+                    <p class="mb-3">
+                        Empowering communities, transforming lives, and building a better tomorrow through compassionate action and sustainable impact.
+                    </p>
+                    <div class="school-info">
+                        <h4><i class="fas fa-graduation-cap me-2"></i>Sai Prema SMART Special School</h4>
+                        <p class="mb-0">
+                            A center for children with special needs - Creating inclusive opportunities for every child to reach their full potential.
+                        </p>
+                    </div>
+                    <a href="#about" class="btn btn-primary-custom mt-3">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 d-flex justify-content-center align-items-center">
+                <div class="logo-container" style="width:360px; height:360px;">
+                    <div class="logo-globe" style="width:340px; height:340px;">
+                        <img src="./Images/ankitha_logo.png" alt="Ankitha Charitable Trust Logo" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="about-card">
+                        <div class="row align-items-center mb-4">
+                            <div class="col-md-8">
+                                <p class="lead mb-4">
+                                    Ankitha Charitable Trust is dedicated to creating positive change in communities through innovative programs and sustainable initiatives, with a special focus on supporting children with special needs.
+                                </p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="school-logo-container mx-auto">
+                                    <img src="./Images/logo.png" alt="Sai Prema SMART Special School Logo"> 
+                                    
+                                </div>
+                                <h5 class="text-primary">Sai Prema SMART<br>Special School</h5>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h4 class="text-primary mb-3">Sai Prema - A Center for Children with Special Needs</h4>
+                                <p>Sai Prema, A center for children with special needs (Intellectual disabled, Down's syndrome, Slow learners and Children with ASD) was started with a spirit to reach the maximum children in need of special care. The motto of the institute is to provide a model program for children with special needs in participation of their parents and families with specially developed innovative practices and multidisciplinary therapeutic interventions.</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4><i class="fas fa-heart text-primary me-2"></i>Our Mission</h4>
+                                <p>To provide comprehensive support and specialized education to children with special needs, while empowering their families and creating inclusive communities that celebrate diversity.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h4><i class="fas fa-eye text-primary me-2"></i>Our Vision</h4>
+                                <p>A world where every child, regardless of their abilities, has access to quality education, therapeutic support, and opportunities to reach their full potential in a nurturing environment.</p>
+                            </div>
+                        </div>
+
+                        <div class="services-grid">
+                            <div class="service-item">
+                                <h6><i class="fas fa-stethoscope me-2"></i>Diagnostic & Assessment</h6>
+                                <p>General & IQ Assessment services</p>
+                            </div>
+                            <div class="service-item">
+                                <h6><i class="fas fa-baby me-2"></i>Early Intervention</h6>
+                                <p>Early support programs for young children</p>
+                            </div>
+                            <div class="service-item">
+                                <h6><i class="fas fa-chalkboard-teacher me-2"></i>Special Education</h6>
+                                <p>Customized learning programs</p>
+                            </div>
+                            <div class="service-item">
+                                <h6><i class="fas fa-hands-helping me-2"></i>Therapeutic Services</h6>
+                                <p>Physio, Speech, Occupational, Behavioral, Vocal, Dance and Computer therapy</p>
+                            </div>
+                            <div class="service-item">
+                                <h6><i class="fas fa-tools me-2"></i>Vocational Training</h6>
+                                <p>Pre-vocational and Vocational programs</p>
+                            </div>
+                            <div class="service-item">
+                                <h6><i class="fas fa-users me-2"></i>Family Support</h6>
+                                <p>Parents counseling, training and referral services</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inspiration Section -->
+    <section id="inspiration" class="inspiration-section">
+        <div class="container">
+            <h2 class="section-title">Our Inspiration</h2>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="inspiration-content">
+                        <div class="text-center mb-5">
+                            <i class="fas fa-quote-left" style="font-size: 3rem; opacity: 0.3;"></i>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-md-4 text-center mb-4">
+                                <div class="founder-avatar mx-auto" style="width: 150px; height: 150px;">
+                                    <img src="./Images/jhansi_lakshmi.jpeg" alt="Smt. Bikkina Jhansi Lakshmi">
+                                    
+                                </div>
+                                <h5 class="mt-3">Smt. Bikkina Jhansi Lakshmi</h5>
+                                <p class="small opacity-75">Principal, Sai Prema SMART Special School</p>
+                            </div>
+                            <div class="col-md-8">
+                                <p class="lead mb-4">
+                                    Our inspiration stems from the remarkable journey of Smt. Bikkina Jhansi Lakshmi, a mother to a Intellectual disabled child and a professional Special Educator with 38 years of experience in training children with special needs.
+                                </p>
+                                <p class="mb-4">
+                                    Having completed her PG Diploma in management of voluntary welfare organizations from Andhra University, she was deeply moved by the struggles of many deprived parents of children with special needs. This empathy and understanding inspired her to establish a comprehensive training and therapeutic center.
+                                </p>
+                                <p class="mb-0">
+                                    Her dedication to providing specialized care, combined with her personal experience as a parent, drives our mission to create inclusive opportunities for every child to reach their full potential.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-md-4 text-center">
+                                <div class="mb-3">
+                                    <i class="fas fa-heart" style="font-size: 2.5rem;"></i>
+                                </div>
+                                <h5>Compassion</h5>
+                                <p>Understanding the unique challenges faced by families with special needs children</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="mb-3">
+                                    <i class="fas fa-graduation-cap" style="font-size: 2.5rem;"></i>
+                                </div>
+                                <h5>Expertise</h5>
+                                <p>Two decades of professional experience in special education and therapeutic interventions</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="mb-3">
+                                    <i class="fas fa-hands-helping" style="font-size: 2.5rem;"></i>
+                                </div>
+                                <h5>Service</h5>
+                                <p>Dedicated to empowering children and families through comprehensive support programs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+<section id="gallery" class="gallery-section">
+    <div class="container">
+        <h2 class="section-title">Gallery</h2>
+        <div class="gallery-container">
+            <div class="gallery-scroll">
+                <div class="gallery-item">
+                    <img src="./Images/gallery1.jpeg" alt="Gallery Image 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="./Images/gallery2.jpeg" alt="Gallery Image 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="./Images/gallery3.jpeg" alt="Gallery Image 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="./Images/gallery4.jpeg" alt="Gallery Image 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="./Images/gallery5.jpeg" alt="Gallery Image 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="./Images/gallery6.jpeg" alt="Gallery Image 6">
+                </div>
+                
+                <!-- Duplicate all images for seamless looping -->
+                <div class="gallery-item">
+                    <img src="./Images/gallery1.jpeg" alt="Gallery Image 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="./Images/gallery2.jpeg" alt="Gallery Image 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="./Images/gallery3.jpeg" alt="Gallery Image 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="./Images/gallery4.jpeg" alt="Gallery Image 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="./Images/gallery5.jpeg" alt="Gallery Image 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="./Images/gallery6.jpeg" alt="Gallery Image 6">
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Founders Section -->
+    <section id="founders" class="founders-section">
+        <div class="container">
+            <h2 class="section-title">Our Founders</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="founder-card">
+                        <div class="founder-avatar">
+                            <img src="./Images/founder1.jpeg" alt="Jhansi Lakshmi"> 
+                            
+                        </div>
+                        <h4>Jhansi Lakshmi Bikkina</h4>
+                        <p class="text-muted">Chairperson</p>
+                        <p>A dedicated advocate for the rights of specially-abled children in Vijayawada. Leads the strategic vision and direction for the trust. Oversees development of educational and vocational programs at Sai Prema Smart Special School.</p>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="founder-card">
+                        <div class="founder-avatar">
+                             <img src="./Images/Profile-PNG-Photo.png" alt="Ganapathineedi Srilakshmi Vasavi"> 
+                            
+                        </div>
+                        <h4>Ganapathineedi Srilakshmi Vasavi</h4>
+                        <p class="text-muted">Secretary</p>
+                        <p>Responsible for daily operations and coordination of trust activities. Manages outreach, partnerships, and community engagement. Ensures smooth functioning of special needs education initiatives.</p>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="founder-card">
+                        <div class="founder-avatar">
+                            <img src="./Images/Profile-PNG-Photo.png" alt="Satyanarayana Murthy Bolla"> 
+                            
+                        </div>
+                        <h4>Satyanarayana Murthy Bolla</h4>
+                        <p class="text-muted">Treasurer</p>
+                        <p>Handles all financial matters including budgeting, accounting, and donation management. Ensures compliance and transparency in funding allocation. Supports sustainable resource planning for long-term programs.</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title text-white">Contact Us</h2>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="contact-form">
+                        <h3 class="text-primary mb-4">Get in Touch</h3>
+                        <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST">
+                          <div class="row">
+                             <div class="col-md-6 mb-3">
+                               <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                             </div>
+                             <div class="col-md-6 mb-3">
+                               <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                             </div>
+                           </div>
+                           <div class="mb-3">
+                             <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                           </div>
+                           <div class="mb-3">
+                             <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
+                           </div>
+                           <button type="submit" class="btn btn-primary-custom">Send Message</button>
+                            <div id="formSuccess" style="display:none; color:green; margin-top:15px;">
+                              Your message has been sent.
+                             </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contact-info">
+                        <h3 class="mb-4">Contact Information</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h5>Address</h5>
+                                <p>Sai Prema SMART special school,<br>Y.Appa Rao St, Ashok Nagar,<br>Vijayawada, Andhra Pradesh,<br> 520007.</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h5>Phone</h5>
+                                <p>+91 9849524249</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h5>Email</h5>
+                                <p>saipremavijayawada@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>©Ankitha Charitable Trust</h5>
+                    <p>Creating positive change through compassionate action and sustainable impact.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="social-links">
+                        <a href="#home" class="text-white me-3"><i class="fa fa-globe" aria-hidden="true"></i></a>
+                    </div>   
+                </div>    
+            </div>
+        </div>
+    </footer>
+
+    <script>
+      document.getElementById('contactForm').addEventListener('submit', async function(e) {
+       e.preventDefault();
+       const form = e.target;
+       const data = new FormData(form);
+       const action = form.action;
+       try {
+        await fetch(action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        });
+        form.reset();
+          document.getElementById('formSuccess').style.display = 'block';
+        } catch (error) {
+        alert('There was a problem sending your message.');
+        }
+      });
+    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>    
+
